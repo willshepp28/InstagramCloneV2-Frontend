@@ -1,0 +1,21 @@
+
+ Install Angular
+ - ng install -g @angular/cli
+
+
+ Generate New App
+ - ng new "appName" --skip-git
+
+ Run Dev Server & Open Browser
+ ng serve --open
+
+
+
+
+
+
+
+FYI
+- Import Bootstrap and place it in angular.json
+- Declarations are where components go
+- When you import a module you will have to put it in imports in app.module.ts
