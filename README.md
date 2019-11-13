@@ -7,7 +7,7 @@
 
 This is the client to Instagram Clone V2.
 
-[Click here to visit the API repository](https://github.com/willshepp28/InstagramCloneV2-Backend/blob/master/README.md)
+[Click here to visit the API repository](https://github.com/willshepp28/InstagramCloneV2-Backend)
 
 
 ---
