@@ -53,11 +53,20 @@ form {
   border: 1px solid #e6e6e6;
 }
 
-.ig-primary {
+.ig-primary{
   color: white !important;
   background-color: #3897f0 !important;
   background: rgba(var(--h5f,56,151,240),1);
 }
+
+.ig-primary-color {
+  color: #3897f0 !important;
+}
+
+.ig-grey-color {
+  color: #999 !important;
+}
+
 
 .light-grey-border {
   border: 1px solid #efefef !important;
@@ -74,6 +83,16 @@ form {
 
 
 
+/* Specific Styles */
+.signup-sentence {
+  font-weight: 600;
+    line-height: 20px;
+    font-size: 17px;
+}
+
+.login-form input {
+  height: 36px !important;
+}
 
 /* Spacing & Sizes */
 .w-60 {
@@ -101,7 +120,7 @@ form {
 
 
 /* Media Queries */
-@media only screen and (max-width: 400px) {
+/* @media only screen and (max-width: 400px) {
   .login-form {
     width:100%;
   }
@@ -118,4 +137,4 @@ form {
     width: 35%;
   }
 
-}
+} */
