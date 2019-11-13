@@ -1,5 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+/*
+
+  TABLE OF CONTENTS
+  - General Styles
+  - Image Sprites
+  - Colors
+  - Spacing & Sizes
+  - Media Queries
+
+
+*/
+
+
+
 /*  General styles */
 
 body {
@@ -12,7 +27,7 @@ body {
 
 
 
-/*  Image Srpites */
+/*  Image Sprites */
 .sprite {
   background: url("https://instagram-clone-2019.s3.amazonaws.com/image-sprites/image-sprites-2.png");
 }
@@ -25,18 +40,19 @@ body {
 }
 
 
+
+
+
+/*  Colors */
 .grey-border {
   border: 1px solid #e6e6e6;
 }
-
-
 
 .ig-primary {
   color: white !important;
   background-color: #3897f0 !important;
   background: rgba(var(--h5f,56,151,240),1);
 }
-
 
 .light-grey-border {
   border: 1px solid #efefef !important;
@@ -50,3 +66,35 @@ body {
   background-color: rgba(var(--h5f,56,151,240),.3);
 }
 
+
+
+
+
+/* Spacing & Sizes */
+.w-60 {
+  width: 60%;
+}
+
+
+
+
+
+/* Media Queries */
+@media only screen and (max-width: 400px) {
+  .login-form {
+    width:100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .login-form {
+    width:80%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .login-form {
+    width: 40%;
+  }
+
+}
