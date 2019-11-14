@@ -8,7 +8,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   title = 'Instagram Clone V2';
-  constructor(private titleService: Title){}
+  constructor(private titleService: Title) {}
 
   ngOnInit() {
     this.setTitle("Instagram");
