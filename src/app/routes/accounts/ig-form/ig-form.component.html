@@ -1,0 +1,36 @@
+
+<div class="d-flex flex-column align-items-center text-center">
+    <form class="login-form text-center mx-auto grey-border p-5 mt-12 mb-2 col-md-4">
+        <div class="form-group mb-4">
+          <div class="sprite ig-logo mx-auto"></div>
+        </div>
+
+          <!-- Component End ]\ -->
+          <app-signup-inputs *ngIf="route === '/signup'; else login"></app-signup-inputs>
+          <ng-template #login>
+              <app-login-inputs></app-login-inputs>
+          </ng-template>
+
+      </form>
+
+      <div class="card col-md-4">
+          <div class="card-body">
+            <p *ngIf="route === '/signup'; else s" class="card-text">Have an account?<a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="ig-primary-color"> Log In</a></p>
+            <ng-template #s><p class="card-text">Don't have an account?<a [routerLink]="['/signup']" routerLinkActive="router-link-active" class="ig-primary-color"> Sign up</a></p></ng-template>
+          </div>
+        </div>
+
+
+      <div class="col-md-4 mt-2">
+          <p class="mt-3 w-100">Get the app</p>
+          <div class="row mt-2">
+            <div class="col-md-6">
+                <a href="https://apps.apple.com/us/app/instagram/id389801252"><img height="50px;" src="https://instagram-clone-2019.s3.amazonaws.com/ig-images/badges/apple-store-badge.png" alt=""></a>
+            </div>
+            <div class="col-md-6">
+                <a class="col-md-3" href="https://play.google.com/store/apps/details?id=com.instagram.android"><img height="50px" src="https://instagram-clone-2019.s3.amazonaws.com/ig-images/badges/google-play-icon.png" alt=""></a>
+            </div>
+          </div>
+      </div>
+
+</div>
