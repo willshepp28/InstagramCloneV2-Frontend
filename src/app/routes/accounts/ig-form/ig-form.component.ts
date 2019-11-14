@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,11 +12,14 @@ export class IgFormComponent implements OnInit {
   route: string;
 
   constructor(
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {
     this.route = this.router.url;
+
   }
+
+
 
 }
