@@ -4,7 +4,7 @@
         <div class="form-group mb-4">
           <div class="sprite ig-logo mx-auto"></div>
         </div>
-          <app-signup-inputs *ngIf="route === '/signup'; else login"></app-signup-inputs>
+          <app-signup-inputs *ngIf="route === '/accounts/emailsignup'; else login"></app-signup-inputs>
           <ng-template #login>
               <app-login-inputs></app-login-inputs>
           </ng-template>
@@ -13,8 +13,8 @@
 
       <div class="card col-md-4">
           <div class="card-body">
-            <p *ngIf="route === '/signup'; else s" class="card-text">Have an account?<a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="ig-primary-color"> Log In</a></p>
-            <ng-template #s><p class="card-text">Don't have an account?<a [routerLink]="['/signup']" routerLinkActive="router-link-active" class="ig-primary-color"> Sign up</a></p></ng-template>
+            <p *ngIf="route === '/accounts/emailsignup'; else s" class="card-text">Have an account?<a [routerLink]="['/accounts/login']" routerLinkActive="router-link-active"  class="ig-primary-color"> Log In</a></p>
+            <ng-template #s><p class="card-text">Don't have an account?<a [routerLink]="['/accounts/emailsignup']" routerLinkActive="router-link-active" class="ig-primary-color"> Sign up</a></p></ng-template>
           </div>
         </div>
 

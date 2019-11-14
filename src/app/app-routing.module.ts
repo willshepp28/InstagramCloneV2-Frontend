@@ -4,9 +4,9 @@ import { IgFormComponent } from './routes/accounts/ig-form/ig-form.component';
 
 
 const routes: Routes = [
-  { path: 'login', component: IgFormComponent, },
-  { path: 'signup', component: IgFormComponent },
-  { path: '', redirectTo: '/signup', pathMatch: 'full' }
+  { path: 'accounts/login', component: IgFormComponent, },
+  { path: 'accounts/emailsignup', component: IgFormComponent },
+  { path: '', redirectTo: '/accounts/signup', pathMatch: 'full' }
 ];
 
 @NgModule({
