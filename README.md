@@ -7,6 +7,8 @@
 
 This is the client to Instagram Clone V2.
 
+[Click here to visit Instagram Clone V2 website live](http://instagram-v2.s3-website-us-east-1.amazonaws.com/signup)
+
 [Click here to visit the API repository](https://github.com/willshepp28/InstagramCloneV2-Backend)
 
 
