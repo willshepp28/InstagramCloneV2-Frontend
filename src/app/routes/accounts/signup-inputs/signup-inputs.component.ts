@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-signup-inputs',
@@ -7,10 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signup-inputs.component.css']
 })
 export class SignupInputsComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -25,8 +27,16 @@ export class SignupInputsComponent implements OnInit {
 
   get formValues() { return this.form.controls; }
 
-  onSubmit(){
-    console.log(this.formValues);
+  onSubmit() {
+    if (this.form.invalid) { console.log("invalid"); return; }
+
+    this.authenticationService.registerUser({
+      email: this.formValues.email.value,
+      fullName: this.formValues.fullName.value,
+      username: this.formValues.username.value,
+      password: this.formValues.password.value
+    })
+      .subscribe( response => console.log(response));
   }
 
 }

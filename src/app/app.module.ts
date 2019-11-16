@@ -10,6 +10,8 @@ import { IgFormComponent } from './routes/accounts/ig-form/ig-form.component';
 import { ExploreComponent } from './routes/explore/explore.component';
 import { InstagramFeedComponent } from './routes/instagram-feed/instagram-feed.component';
 import { ProfileTabComponent } from './routes/profile-tab/profile-tab.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from './core/services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { ProfileTabComponent } from './routes/profile-tab/profile-tab.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
