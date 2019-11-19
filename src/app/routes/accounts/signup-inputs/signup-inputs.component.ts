@@ -3,8 +3,6 @@ import { Store } from "@ngrx/store";
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppState } from "../../../core/store/app.states";
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { Router } from '@angular/router';
 import { SignUp } from 'src/app/core/store/actions/authentication.actions';
 
 @Component({
@@ -17,8 +15,6 @@ export class SignupInputsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService,
-    private router: Router,
     private store: Store<AppState>
   ) { }
 

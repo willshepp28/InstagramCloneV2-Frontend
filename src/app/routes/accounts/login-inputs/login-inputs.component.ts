@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from "@ngrx/store";
+import { AppState } from "../../../core/store/app.states";
+import { LogIn } from 'src/app/core/store/actions/authentication.actions';
 
 @Component({
   selector: 'app-login-inputs',
@@ -12,11 +15,11 @@ export class LoginInputsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
-    console.log(this.router.url);
 
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
@@ -27,8 +30,14 @@ export class LoginInputsComponent implements OnInit {
   get formValues() { return this.form.controls; }
 
   onSubmit() {
-    console.log(this.formValues.email.value);
-    console.log(this.formValues.password.value);
+    if (this.form.invalid) { console.log("invalid"); return; }
+
+    const payload = {
+      email: this.formValues.email.value,
+      password: this.formValues.password.value
+    };
+
+    this.store.dispatch(new LogIn(payload));
   }
 
 }
