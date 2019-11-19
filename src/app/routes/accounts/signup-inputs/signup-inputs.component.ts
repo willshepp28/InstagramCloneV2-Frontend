@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-inputs',
@@ -12,7 +13,8 @@ export class SignupInputsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -36,7 +38,14 @@ export class SignupInputsComponent implements OnInit {
       username: this.formValues.username.value,
       password: this.formValues.password.value
     })
-      .subscribe( response => console.log(response));
+    .subscribe(
+    response => {
+      console.log(response);
+      this.router.navigate(["/accounts/login"]);
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }
