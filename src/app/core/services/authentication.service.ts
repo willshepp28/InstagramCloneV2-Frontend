@@ -14,8 +14,8 @@ export class AuthenticationService {
   getToken(): string {
     return localStorage.getItem("token");
   }
-  registerUser(user) {
-    return this.http.post<any>("/api/authenticate/register", user);
+  registerUser(email, fullName, username, password) {
+    return this.http.post<any>("/api/authenticate/register", {email, fullName, username, password});
   }
 
   logIn(user) {

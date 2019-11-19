@@ -4,7 +4,14 @@ import { Router } from "@angular/router";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { tap, map, switchMap, catchError } from "rxjs/operators";
 
-import { AuthenticationActionTypes, LogIn, LogInSuccess, LogInFailure} from "../actions/authentication.actions";
+import { AuthenticationActionTypes,
+  LogIn,
+  LogInSuccess,
+  LogInFailure,
+  SignUp,
+  SignUpSucess,
+  SignUpFailure
+} from "../actions/authentication.actions";
 import { AuthenticationService } from "../../services/authentication.service";
 import { Observable, of } from 'rxjs';
 
@@ -44,8 +51,49 @@ export class AuthenticationEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthenticationActionTypes.LOGIN_SUCCESS),
     tap((user) => {
-      localStorage.setItem("token", user.payload.token);
       this.router.navigateByUrl("/");
     })
   );
+
+
+  @Effect()
+  SignUp: Observable<any> = this.actions.pipe(
+    ofType(AuthenticationActionTypes.SIGNUP),
+    map((action: SignUp) => action.payload),
+    switchMap(payload => {
+      return this.authenticationService.registerUser(
+        payload.email,
+        payload.fullName,
+        payload.username,
+        payload.password
+      )
+      .pipe(
+        map((user) => {
+          console.log(user);
+          return new SignUpSucess({ token: user.token, email: payload.email});
+        }),
+        catchError((error) => {
+          console.log(error);
+          return of(new SignUpFailure({ error }));
+        })
+      );
+    })
+  );
+
+
+  @Effect({ dispatch: false })
+  SignupSuccess: Observable<any> = this.actions.pipe(
+    ofType(AuthenticationActionTypes.SIGNUP_SUCCESS),
+    tap((user) => {
+      localStorage.setItem("token", user.payload.token);
+      this.router.navigateByUrl("/accounts/login");
+    })
+  );
+
+
+  @Effect({ dispatch: false })
+  SignUpFailure: Observable<any> = this.actions.pipe(
+    ofType(AuthenticationActionTypes.SIGNUP_FAILURE)
+  );
+
 }

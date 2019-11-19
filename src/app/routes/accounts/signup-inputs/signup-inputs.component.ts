@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppState } from "../../../core/store/app.states";
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Router } from '@angular/router';
+import { SignUp } from 'src/app/core/store/actions/authentication.actions';
 
 @Component({
   selector: 'app-signup-inputs',
@@ -14,7 +18,8 @@ export class SignupInputsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
@@ -29,23 +34,17 @@ export class SignupInputsComponent implements OnInit {
 
   get formValues() { return this.form.controls; }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.form.invalid) { console.log("invalid"); return; }
 
-    this.authenticationService.registerUser({
+    const payload = {
       email: this.formValues.email.value,
       fullName: this.formValues.fullName.value,
       username: this.formValues.username.value,
       password: this.formValues.password.value
-    })
-    .subscribe(
-    response => {
-      console.log(response);
-      this.router.navigate(["/accounts/login"]);
-    },
-    error => {
-      console.log(error);
-    });
+    };
+
+    this.store.dispatch(new SignUp(payload));
   }
 
 }

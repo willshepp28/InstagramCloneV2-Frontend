@@ -33,6 +33,23 @@ export function reducer(state = initialState, action: All): State {
         errorMessage: "Please enter the correct email and/or password"
       };
     }
+    case AuthenticationActionTypes.SIGNUP_SUCCESS: {
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: {
+          token: action.payload.token,
+          email: action.payload.email
+        },
+        errorMessage: null
+      };
+    }
+    case AuthenticationActionTypes.SIGNUP_FAILURE: {
+      return {
+        ...state,
+        errorMessage: "Those credientals are already in use"
+      }
+    }
     default: {
       return state;
     }
