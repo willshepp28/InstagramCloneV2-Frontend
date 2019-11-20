@@ -8,6 +8,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from "./core/store/app.states";
 import { AuthenticationEffects } from "./core/store/effects/authentication.effects";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 
 // Components
@@ -44,8 +45,10 @@ import { JwtInterceptor } from "./core/interceptors/jwt-interceptor";
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([
       AuthenticationEffects
-    ])
-    // StoreModule.forRoot(reducers, {});
+    ]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [
     AuthenticationService,
