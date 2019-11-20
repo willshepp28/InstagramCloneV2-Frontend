@@ -36,6 +36,7 @@ export class AuthenticationEffects {
         return this.authenticationService.logIn({email: payload.email, password: payload.password})
           .pipe(
             map((user) => {
+              localStorage.setItem("token", user.token);
               return new LogInSuccess({ token: user.token, email: payload.email});
             }),
             catchError((error) => {
@@ -85,7 +86,6 @@ export class AuthenticationEffects {
   SignupSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthenticationActionTypes.SIGNUP_SUCCESS),
     tap((user) => {
-      localStorage.setItem("token", user.payload.token);
       this.router.navigateByUrl("/accounts/login");
     })
   );
