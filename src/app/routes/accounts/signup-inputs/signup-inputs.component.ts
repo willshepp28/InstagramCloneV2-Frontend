@@ -4,6 +4,8 @@ import { Store } from "@ngrx/store";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppState } from "../../../core/store/app.states";
 import { SignUp } from 'src/app/core/store/actions/authentication.actions';
+import { Observable } from 'rxjs';
+import { Alert } from 'src/app/models/alert/alert';
 
 @Component({
   selector: 'app-signup-inputs',
@@ -12,6 +14,7 @@ import { SignUp } from 'src/app/core/store/actions/authentication.actions';
 })
 export class SignupInputsComponent implements OnInit {
   form: FormGroup;
+  alerts$: any
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,8 +22,7 @@ export class SignupInputsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    this.form = this.formBuilder.group({
+  this.form = this.formBuilder.group({
       email: ['', Validators.required],
       fullName: ['', Validators.required],
       username: ['', Validators.required],

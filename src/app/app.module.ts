@@ -26,6 +26,10 @@ import { AuthenticationService } from './core/services/authentication.service';
 
 // Interceptors
 import { JwtInterceptor } from "./core/interceptors/jwt-interceptor";
+import { AlertsComponent } from './shared-module/components/alerts/alerts.component';
+import { HeaderComponent } from './shared-module/components/header/header.component';
+import { reducer } from './core/store/reducers/authentication.reducers';
+
 
 @NgModule({
   declarations: [
@@ -35,14 +39,19 @@ import { JwtInterceptor } from "./core/interceptors/jwt-interceptor";
     IgFormComponent,
     ExploreComponent,
     InstagramFeedComponent,
-    ProfileTabComponent
+    ProfileTabComponent,
+    AlertsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers, {}),
+    StoreModule.forRoot({
+      alert: reducers.alert,
+      authentication: reducers.authentication
+    }),
     EffectsModule.forRoot([
       AuthenticationEffects
     ]),
