@@ -6,7 +6,7 @@
 
         <!-- Begining of inputs -->
         <div class="form-group mb-1 mt5">
-          <input formControlName="email"  type="number-or-email" class="form-control light-grey-border light-grey-background" id="number-email" aria-describedby="emailHelp" placeholder="Mobile Number or Email" [ngClass]="{ 'is-invalid': submitted && formValues.email.errors }">
+          <input formControlName="email"  type="number-or-email" class="form-control light-grey-border light-grey-background" id="number-email" aria-describedby="emailHelp" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && formValues.email.errors }">
           <div *ngIf="submitted && formValues.email.errors" class="invalid-feedback">
               <div *ngIf="formValues.email.errors.required">Email is required</div>
               <div *ngIf="formValues.email.errors.email">Email must be a valid email address</div>
