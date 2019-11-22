@@ -31,6 +31,7 @@ import { AlertsComponent } from './shared-module/components/alerts/alerts.compon
 import { HeaderComponent } from './shared-module/components/header/header.component';
 import { CustomSerializer } from './core/store/reducers/router.reducer';
 import { AuthenticationGuard } from './core/guards/authentication-guard.service';
+import { ErrorIntercept } from './core/interceptors/error-intercepotor';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { AuthenticationGuard } from './core/guards/authentication-guard.service'
     AuthenticationService,
     AuthenticationGuard,
     { provide: RouterStateSerializer, useClass: CustomSerializer },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true}
   ],
   bootstrap: [AppComponent]
 })
