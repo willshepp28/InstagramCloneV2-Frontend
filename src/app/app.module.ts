@@ -8,6 +8,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from "./core/store/app.states";
 import { AuthenticationEffects } from "./core/store/effects/authentication.effects";
+import { StoreRouterConnectingModule, routerReducer, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 
@@ -28,7 +29,8 @@ import { AuthenticationService } from './core/services/authentication.service';
 import { JwtInterceptor } from "./core/interceptors/jwt-interceptor";
 import { AlertsComponent } from './shared-module/components/alerts/alerts.component';
 import { HeaderComponent } from './shared-module/components/header/header.component';
-import { reducer } from './core/store/reducers/authentication.reducers';
+import { CustomSerializer } from './core/store/reducers/router.reducer';
+import { AuthenticationGuard } from './core/guards/authentication-guard.service';
 
 
 @NgModule({
@@ -52,6 +54,7 @@ import { reducer } from './core/store/reducers/authentication.reducers';
       alert: reducers.alert,
       authentication: reducers.authentication
     }),
+    StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([
       AuthenticationEffects
     ]),
@@ -61,6 +64,8 @@ import { reducer } from './core/store/reducers/authentication.reducers';
   ],
   providers: [
     AuthenticationService,
+    AuthenticationGuard,
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

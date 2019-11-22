@@ -4,14 +4,21 @@ import { IgFormComponent } from './routes/accounts/ig-form/ig-form.component';
 import { ExploreComponent } from './routes/explore/explore.component';
 import { InstagramFeedComponent } from './routes/instagram-feed/instagram-feed.component';
 import { ProfileTabComponent } from './routes/profile-tab/profile-tab.component';
+import { AuthenticationGuard } from './core/guards/authentication-guard.service';
 
 
 const routes: Routes = [
-  { path: 'accounts/login', component: IgFormComponent, },
-  { path: 'accounts/emailsignup', component: IgFormComponent },
-  { path: '', component: InstagramFeedComponent},
-  { path: ':username' , component: ProfileTabComponent},
-  { path: 'explore', component: ExploreComponent},
+  {
+    path: 'accounts',
+     children: [
+      { path: "login", component: IgFormComponent},
+      { path: "emailsignup", component: IgFormComponent}
+     ]
+  },
+
+  { path: '', component: InstagramFeedComponent, canActivate: [AuthenticationGuard]},
+  { path: ':username' , component: ProfileTabComponent, canActivate: [AuthenticationGuard] },
+  { path: 'explore', component: ExploreComponent, canActivate: [AuthenticationGuard]},
   { path: '', redirectTo: '/accounts/emailsignup', pathMatch: 'full' }
 ];
 
