@@ -14,7 +14,9 @@ import { Alert } from 'src/app/models/alert/alert';
 })
 export class SignupInputsComponent implements OnInit {
   form: FormGroup;
-  alerts$: any
+  alerts$: any;
+  submitted =  false;
+  complete = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,16 +25,17 @@ export class SignupInputsComponent implements OnInit {
 
   ngOnInit() {
   this.form = this.formBuilder.group({
-      email: ['', Validators.required],
-      fullName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      fullName: ['', [Validators.required, Validators.minLength(5)]],
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   get formValues() { return this.form.controls; }
 
   onSubmit(): void {
+    this.submitted = true;
     if (this.form.invalid) { console.log("invalid"); return; }
 
     const payload = {

@@ -2,9 +2,9 @@ import { Alert } from "../../../models/alert/alert";
 import { AlertActionTypes, All } from "../actions/alert.actions";
 
 export const initialState: Alert = {
-  activated: true,
+  activated: false,
   status: "none",
-  message: "This is a message"
+  message: "This is a empty message, please add some context."
 };
 
 export function reducer(state = initialState, action: All) {
