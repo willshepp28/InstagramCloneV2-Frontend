@@ -1,0 +1,25 @@
+.ig-header {
+  border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+  background-color: #ffffff !important;
+}
+
+img {
+  height: 33px !important;
+}
+
+
+.ig-header-divider {
+  background-color: #262626;
+  width: 1px !important;
+  padding: 0.5px;
+  margin: 0 16px;
+}
+
+.container {
+  padding: 20px;
+  outline: 0;
+}
+
+.row .col {
+  outline: 0;
+}

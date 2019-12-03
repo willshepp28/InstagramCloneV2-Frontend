@@ -28,10 +28,10 @@ import { AuthenticationService } from './core/services/authentication.service';
 // Interceptors
 import { JwtInterceptor } from "./core/interceptors/jwt-interceptor";
 import { AlertsComponent } from './shared-module/components/alerts/alerts.component';
-import { HeaderComponent } from './shared-module/components/header/header.component';
 import { CustomSerializer } from './core/store/reducers/router.reducer';
 import { AuthenticationGuard } from './core/guards/authentication-guard.service';
 import { ErrorIntercept } from './core/interceptors/error-intercepotor';
+import { HeaderComponent } from './shared-module/layout/header/header.component';
 
 
 @NgModule({
