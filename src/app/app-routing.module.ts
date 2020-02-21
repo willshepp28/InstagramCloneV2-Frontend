@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: "emailsignup", component: IgFormComponent}
      ]
   },
-  { path: '', component: InstagramFeedComponent, canActivate: [AuthenticationGuard]},
+  { path: 'instagram-feed', component: InstagramFeedComponent, canActivate: [AuthenticationGuard]},
   { path: ':username' , component: ProfileTabComponent, canActivate: [AuthenticationGuard] },
   { path: 'explore', component: ExploreComponent, canActivate: [AuthenticationGuard]},
   { path: '', redirectTo: '/accounts/emailsignup', pathMatch: 'full' }
