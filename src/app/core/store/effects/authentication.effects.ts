@@ -36,9 +36,7 @@ export class AuthenticationEffects {
         return this.authenticationService.logIn({email: payload.email, password: payload.password})
           .pipe(
             map((user) => {
-              console.log("User is logging in")
-              localStorage.setItem("token", user.token);
-              this.router.navigate(["/instagram-feed"]);
+              console.log("User is logging in");
               return new LogInSuccess({ token: user.token, email: payload.email});
             }),
             catchError((error) => {
@@ -54,7 +52,8 @@ export class AuthenticationEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthenticationActionTypes.LOGIN_SUCCESS),
     tap((user) => {
-      this.router.navigateByUrl("/");
+      localStorage.setItem("token", user.token);
+      this.router.navigateByUrl("/instagram-feed");
     })
   );
 
