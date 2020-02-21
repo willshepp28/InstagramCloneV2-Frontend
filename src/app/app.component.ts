@@ -22,8 +22,6 @@ export class AppComponent implements OnInit {
       this.showHeader = authentication.isAuthenticated;
     });
 
-
-    console.log(this.showHeader);
   }
 
   public setTitle(title: string) {

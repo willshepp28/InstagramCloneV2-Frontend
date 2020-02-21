@@ -11,10 +11,12 @@ export class AuthenticationGuard implements CanActivate {
     public router: Router
   ) {}
   canActivate(): boolean {
-    if (!this.authentication.getToken()) {
+    if (!this.authentication.checkIfTokenExists()) {
       this.router.navigateByUrl('/accounts/login');
       return false;
     }
+
+    console.log(this.router.url);
     return true;
   }
 }

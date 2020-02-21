@@ -5,11 +5,14 @@ import { ExploreComponent } from './routes/explore/explore.component';
 import { InstagramFeedComponent } from './routes/instagram-feed/instagram-feed.component';
 import { ProfileTabComponent } from './routes/profile-tab/profile-tab.component';
 import { AuthenticationGuard } from './core/guards/authentication-guard.service';
+import { AuthenticatedGuard } from './core/guards/authenticated.guard';
+
 
 
 const routes: Routes = [
   {
     path: 'accounts',
+    // canActivateChild: [AuthenticatedGuard],
      children: [
       { path: "login", component: IgFormComponent},
       { path: "emailsignup", component: IgFormComponent}

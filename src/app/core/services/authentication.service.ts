@@ -15,6 +15,9 @@ export class AuthenticationService {
   ) { }
 
 
+  checkIfTokenExists(): boolean {
+    return !!localStorage.getItem("token");
+  }
 
   getToken(): string {
     return localStorage.getItem("token");
