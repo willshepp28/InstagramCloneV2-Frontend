@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: "/api/authenticate/"
+  AUTH_API_URL: "/api/authenticate/"
 };
 
 /*

@@ -8,11 +8,13 @@ import { environment } from "../../../environments/environment";
 })
 export class AuthenticationService {
 
-  private API_URL = environment.API_URL;
+  private API_URL: any = environment.AUTH_API_URL;
 
   constructor(
     private http: HttpClient
   ) { }
+
+
 
   getToken(): string {
     return localStorage.getItem("token");
@@ -22,6 +24,7 @@ export class AuthenticationService {
   }
 
   logIn(user) {
+    console.log(this.API_URL)
     return this.http.post<any>( this.API_URL + "login", user);
   }
 
@@ -33,4 +36,5 @@ export class AuthenticationService {
     localStorage.removeItem("token");
 
   }
+
 }

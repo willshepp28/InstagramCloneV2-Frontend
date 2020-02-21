@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: "https://instagram-clone-v2.herokuapp.com/"
+  AUTH_API_URL: "https://instagram-clone-v2.herokuapp.com/api/authenticate/"
 };
