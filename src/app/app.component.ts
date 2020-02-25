@@ -8,7 +8,7 @@ import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   title = 'Instagram Clone V2';
   showHeader: boolean;
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.showHeader = JSON.parse(localStorage.getItem('isAuthenticated'));
       });
     } else {
-      this.showHeader = JSON.parse(localStorage.getItem('isAuthenticated'))
+      this.showHeader = JSON.parse(localStorage.getItem('isAuthenticated'));
     }
 
   }
@@ -38,12 +38,5 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public greet(greeting: string) {
     console.log(greeting);
-  };
-
-  ngOnDestroy() {
-    this.store.select('authentication').subscribe(authentication => {
-      this.showHeader = authentication.isAuthenticated;
-    });
   }
-
 }
