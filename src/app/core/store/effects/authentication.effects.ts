@@ -51,6 +51,7 @@ export class AuthenticationEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthenticationActionTypes.LOGIN_SUCCESS),
     tap((user) => {
+      console.log(user);
       localStorage.setItem("token", user.payload.token);
       this.router.navigateByUrl("/instagram-feed");
     })

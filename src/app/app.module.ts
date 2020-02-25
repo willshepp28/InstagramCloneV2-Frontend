@@ -34,6 +34,7 @@ import { ErrorIntercept } from './core/interceptors/error-intercepotor';
 import { HeaderComponent } from './shared-module/layout/header/header.component';
 import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { PostComponent } from './shared-module/components/post/post.component';
+import { ActivityComponent } from './routes/activity/activity.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { PostComponent } from './shared-module/components/post/post.component';
     AlertsComponent,
     HeaderComponent,
     PostComponent,
+    ActivityComponent,
   ],
   imports: [
     BrowserModule,
