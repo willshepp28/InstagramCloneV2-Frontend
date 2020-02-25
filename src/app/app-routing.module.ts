@@ -19,9 +19,9 @@ const routes: Routes = [
      ]
   },
   { path: 'instagram-feed', component: InstagramFeedComponent, canActivate: [AuthenticationGuard]},
-  { path: ':username' , component: ProfileTabComponent, canActivate: [AuthenticationGuard] },
+  { path: 'profile/:username' , component: ProfileTabComponent, canActivate: [AuthenticationGuard] },
   { path: 'explore', component: ExploreComponent, canActivate: [AuthenticationGuard]},
-  { path: '', redirectTo: '/accounts/emailsignup', pathMatch: 'full' }
+  { path: '', redirectTo: '/instagram-feed', pathMatch: 'full' }
 ];
 
 @NgModule({
