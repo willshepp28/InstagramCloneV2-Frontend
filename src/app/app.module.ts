@@ -33,6 +33,7 @@ import { AuthenticationGuard } from './core/guards/authentication-guard.service'
 import { ErrorIntercept } from './core/interceptors/error-intercepotor';
 import { HeaderComponent } from './shared-module/layout/header/header.component';
 import { AuthenticatedGuard } from './core/guards/authenticated.guard';
+import { PostComponent } from './shared-module/components/post/post.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { AuthenticatedGuard } from './core/guards/authenticated.guard';
     ProfileTabComponent,
     AlertsComponent,
     HeaderComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
