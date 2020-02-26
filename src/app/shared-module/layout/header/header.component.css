@@ -23,3 +23,8 @@ img {
 .row .col {
   outline: 0;
 }
+
+.row {
+  outline: 0 !important;
+  border:0 none !important;
+}
