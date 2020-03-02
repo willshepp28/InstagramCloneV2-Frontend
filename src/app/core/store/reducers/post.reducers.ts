@@ -22,6 +22,8 @@ export function reducer(state = initialState, action: All): IPostState{
         posts: action.payload
       }
     }
+    default:
+      return state;
   }
 }
 

@@ -35,7 +35,8 @@ import { HeaderComponent } from './shared-module/layout/header/header.component'
 import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { PostComponent } from './shared-module/components/post/post.component';
 import { ActivityComponent } from './routes/activity/activity.component';
-
+import { PostEffects } from './core/store/effects/post.effects';
+import { PostService } from "./core/services/post.service";
 
 @NgModule({
   declarations: [
@@ -58,11 +59,13 @@ import { ActivityComponent } from './routes/activity/activity.component';
     HttpClientModule,
     StoreModule.forRoot({
       alert: reducers.alert,
-      authentication: reducers.authentication
+      authentication: reducers.authentication,
+      posts: reducers.posts
     }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([
-      AuthenticationEffects
+      AuthenticationEffects,
+      PostEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25
@@ -72,6 +75,7 @@ import { ActivityComponent } from './routes/activity/activity.component';
     AuthenticationService,
     AuthenticationGuard,
     AuthenticatedGuard,
+    PostService
     { provide: RouterStateSerializer, useClass: CustomSerializer },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true}
