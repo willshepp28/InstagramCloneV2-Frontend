@@ -4,23 +4,28 @@ import { Post } from 'src/app/models/post/post';
 
 
 export enum PostActionTypes {
-  GET_POSTS = "[POST] Get Posts",
-  GET_POSTS_SUCCESS = "[POST] Get Posts Successs"
+  LOAD_POSTS = "[POST] Load Posts",
+  LOAD_POSTS_SUCCESS = "[POST] Load Posts Successs",
+  LOAD_POSTS_FAILURE = "[POST] Load Posts Failed"
 }
 
 
-export class GetPosts implements Action {
-  readonly type = PostActionTypes.GET_POSTS;
+export class LoadPosts implements Action {
+  readonly type = PostActionTypes.LOAD_POSTS;
+}
+
+export class LoadPostsSuccess implements Action {
+  readonly type = PostActionTypes.LOAD_POSTS_SUCCESS;
   constructor(public payload: any) {}
 }
 
-export class GetPostsSuccess implements Action {
-  readonly type = PostActionTypes.GET_POSTS_SUCCESS;
-  constructor(public payload: any) {}
+export class LoadPostFailed implements Action {
+  readonly type = PostActionTypes.LOAD_POSTS_FAILURE;
+  constructor(public payload: {error: any}) {}
 }
-
 
 
 export type All =
-| GetPosts
-| GetPostsSuccess;
+| LoadPosts
+| LoadPostsSuccess
+| LoadPostFailed;

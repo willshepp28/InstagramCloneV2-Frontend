@@ -7,10 +7,12 @@ import { Injectable } from '@angular/core';
 
 import {
   PostActionTypes,
- GetPosts,
- GetPostsSuccess
+ LoadPosts,
+ LoadPostsSuccess,
+ LoadPostFailed
 } from "../actions/post.actions";
 import { PostService } from '../../services/post.service';
+import * as PostActions from '../actions/post.actions';
 
 @Injectable()
 export class PostEffects {
@@ -23,20 +25,34 @@ export class PostEffects {
 
 
   @Effect()
-  GetPosts: Observable<any> = this.actions
+  LoadPosts: Observable<any> = this.actions
     .pipe(
-      ofType(PostActionTypes.GET_POSTS),
-      map((action: GetPosts) => action.payload),
-      switchMap(payload => {
-        return this.postService$.getPosts()
-          .pipe(
-            map((posts) => {
-              console.log(posts)
-            }),
-            catchError((error) => {
-              console.log(error);
-            })
-          )
+      ofType(PostActionTypes.LOAD_POSTS),
+      switchMap(() => {
+        return this.postService$.loadPosts().pipe(
+          map(posts =>  new PostActions.LoadPostsSuccess(posts)),
+          catchError(error => of(new PostActions.LoadPostFailed({ error: error})))
+        )
+      })
+    );
+
+
+
+    @Effect({ dispatch: false })
+    LoadPostsSuccess: Observable<any> = this.actions.pipe(
+      ofType(PostActionTypes.LOAD_POSTS_SUCCESS),
+      tap((post) => {
+        console.log(post);
+      })
+    );
+
+
+
+    @Effect({ dispatch: false})
+    LoadPostsFailed: Observable<any> = this.actions.pipe(
+      ofType(PostActionTypes.LOAD_POSTS_FAILURE),
+      tap((error) => {
+        console.log(error);
       })
     )
 

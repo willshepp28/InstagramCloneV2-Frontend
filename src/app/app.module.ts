@@ -75,7 +75,7 @@ import { PostService } from "./core/services/post.service";
     AuthenticationService,
     AuthenticationGuard,
     AuthenticatedGuard,
-    PostService
+    PostService,
     { provide: RouterStateSerializer, useClass: CustomSerializer },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true}

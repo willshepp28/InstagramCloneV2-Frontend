@@ -4,22 +4,44 @@ import { PostActionTypes, All } from "../actions/post.actions";
 
 
 export interface IPostState {
+  isLoading: boolean;
+  isLoadingSuccess: boolean;
   posts: Post[];
 }
 
 
 export const initialState: IPostState = {
-  posts: null
+  isLoading: false,
+  isLoadingSuccess: false,
+  posts: []
 };
 
 
 
 export function reducer(state = initialState, action: All): IPostState{
   switch (action.type) {
-    case PostActionTypes.GET_POSTS_SUCCESS : {
+    case PostActionTypes.LOAD_POSTS: {
       return {
         ...state,
-        posts: action.payload
+        isLoading: true,
+        isLoadingSuccess: false
+      };
+    }
+    case PostActionTypes.LOAD_POSTS_SUCCESS : {
+      return {
+        ...state,
+        isLoading: false,
+        isLoadingSuccess: true,
+        posts: action.payload.data
+
+      };
+    }
+    case PostActionTypes.LOAD_POSTS_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoadingSuccess: false,
+        posts: []
       }
     }
     default:

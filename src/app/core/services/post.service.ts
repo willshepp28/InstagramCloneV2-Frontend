@@ -14,7 +14,7 @@ export class PostService {
     private http: HttpClient
   ) {}
 
-  getPosts() {
+  loadPosts() {
     return this.http.get<any>(this.API_URL + "getPosts");
   }
 }
