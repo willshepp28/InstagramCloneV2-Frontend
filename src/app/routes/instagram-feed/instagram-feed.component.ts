@@ -23,9 +23,7 @@ export class InstagramFeedComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new LoadPosts());
     this.store.select('posts').subscribe(post => {
-      console.log("selecting the posts store");
-      console.log(post);
-      this.post$ = post;
+      this.post$ = post.posts;
      });
   }
 

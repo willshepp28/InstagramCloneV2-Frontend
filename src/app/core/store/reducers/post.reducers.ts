@@ -32,7 +32,7 @@ export function reducer(state = initialState, action: All): IPostState{
         ...state,
         isLoading: false,
         isLoadingSuccess: true,
-        posts: action.payload.data
+        posts: action.payload
 
       };
     }
